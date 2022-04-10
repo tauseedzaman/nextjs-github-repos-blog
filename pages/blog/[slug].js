@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useRouter } from 'next/dist/client/router';
 import { useEffect, useState } from 'react/cjs/react.production.min';
-export default function PostPage({data}) {
-console.log(data)
+export default function PostPage({slug}) {
+console.log(slug)
 
   return (
     <>
@@ -22,36 +22,58 @@ console.log(data)
 }
 
 
-export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { slug: 'age-colculdator' } },
-    ],
-    fallback: true,
-  };
-}
+// export async function getStaticPaths() {
+//   return {
+//     paths: [
+//       { params: { slug: 'age-colculdator' } },
+//     ],
+//     fallback: true,
+//   };
+// }
 
-export async function getStaticProps(context) {
+
+export const getStaticProps = async (context) => {
   const request = {
-    link: `https://api.github.com/users/tauseedzaman/repos/${context.slug}`,
-    object: {
+    url: `https://api.github.com/users/tauseedzaman/repos/${context.params.slug}`,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + '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',
+      }
+  }
+  const res = await fetch(request)
+  const slug = await res.json()
+
+  return {
+    props: {
+      slug,
+    },
+  }
+}
+export const getStaticPaths = async () => {
+  const request = {
+    url: `https://api.github.com/users/tauseedzaman/repos`,
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'token ' + 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,
-      }
+        'Authorization': 'Token ' + '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',
     }
   }
-  
-  console.log(context)
-  const res = await fetch(request)
-  console.log(res)
-  const data = await res.json()
+  const res = await fetch(`https://api.github.com/users/tauseedzaman/repos`,{ headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'Token ' + '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',
+}})
+console.log(res)
+
+  const repos = await res.json()
+
+  const names = repos.map((repo) => repo.name)
+  const paths = names.map((name) => ({ params: { slug: name.toString() } }))
 
   return {
-    props: {
-      data:data,
-    },
+    paths,
+    fallback: false,
   }
 }
