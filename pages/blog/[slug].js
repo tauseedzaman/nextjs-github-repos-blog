@@ -22,15 +22,6 @@ console.log(slug)
 }
 
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { slug: 'age-colculdator' } },
-//     ],
-//     fallback: true,
-//   };
-// }
-
 
 export const getStaticProps = async (context) => {
   const request = {
@@ -38,7 +29,7 @@ export const getStaticProps = async (context) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'Token ' + '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',
+        'Authorization': 'Token ' + '*******',
       }
   }
   const res = await fetch(request)
@@ -57,13 +48,13 @@ export const getStaticPaths = async () => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'Token ' + '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',
+        'Authorization': 'Token ' + '*******',
     }
   }
   const res = await fetch(`https://api.github.com/users/tauseedzaman/repos`,{ headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Token ' + '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',
+    'Authorization': 'Token ' + '*******',
 }})
 console.log(res)
 
