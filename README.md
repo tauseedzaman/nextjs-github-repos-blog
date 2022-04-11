@@ -1,19 +1,24 @@
-# Next Markdown Blog
+# Next JS Github Repos Blog
 
-Simple static blog using markdown and Next.js
+Simple Github Repos for blog using Next.js. 
+Gettings User Repos from github and post at like a blog using github api and next js
 
-[DEMO](https://next-markdown-blog-drab.vercel.app/)
+[DEMO]()
 
 ## Usage
 
 ```bash
-# Install dependencies
+# First go ahead and
+clone the repo
+
+# then you need to
+set up the envirement variables in next.config.js
+
+# Now Install dependencies
 npm install
 
-# Run dev server
+# And Now Run dev server
 npm run dev
-
-# Build for prod and export static website
-npm run build
 ```
-# nextjs-github-repos-blog
+
+# Created by <a href="https://github.com/tauseedzaman">tauseedzaman</a>

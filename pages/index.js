@@ -2,7 +2,6 @@ import Head from "next/head";
 import Post from "../components/Post";
 
 export default function Home({ data }) {
-
   return (
     <div>
       <Head>
@@ -20,9 +19,9 @@ export default function Home({ data }) {
 export async function getStaticProps(context) {
   const res = await fetch(process.env.github_url, {
     headers: {
-      "Accept": "application/vnd.github.v3+json",
+      Accept: "application/vnd.github.v3+json",
       "Content-Type": "application/json",
-      "Authorization": "Token " + process.env.github_secret,
+      Authorization: "Token " + process.env.github_secret,
     },
   });
   const data = await res.json();

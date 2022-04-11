@@ -8,7 +8,7 @@ export default function PostPage({ slug }) {
       <div className="card card-page">
         <h1 className="banner">{slug.name}</h1>
         <h3 className="post-title">
-          <a href={slug.html_url} target="_blank">
+          <a href={slug.html_url} target="_blank" rel="noreferrer">
             {slug.full_name}
           </a>
         </h3>
@@ -62,9 +62,9 @@ export const getStaticProps = async (context) => {
     `${process.env.github_repos_url}${context.params.slug}`,
     {
       headers: {
-        "Accept": "application/vnd.github.v3+json",
+        Accept: "application/vnd.github.v3+json",
         "Content-Type": "application/json",
-        "Authorization": "Token " + `${process.env.github_secret}`,
+        Authorization: "Token " + `${process.env.github_secret}`,
       },
     }
   );
