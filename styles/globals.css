@@ -12,6 +12,21 @@
   text-align: center;
   padding-block: 50px;
 }
+.text-right{
+  float: right;
+}
+table{
+  width: 100%;
+}
+.repo__table tr td{
+  margin-top: 1px;
+  border-top: 1px solid blue;
+  padding: 5px !important;
+}
+.repo__table tr td:nth-child(even){
+  /* float: right; */
+  color: darkblue;
+}
 body {
   font-family: 'Poppins', sans-serif;
 }
